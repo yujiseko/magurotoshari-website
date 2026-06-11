@@ -1,0 +1,199 @@
+
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --ink:#1a1208; --ink2:#3d2e14;
+  --gold:#b8945a; --gold2:#d4a96a;
+  --red:#8b1a1a; --red2:#b33;
+  --cream:#f7f2ea; --cream2:#ede4d4;
+  --white:#fdfaf5; --dark:#0d0a06;
+}
+html { scroll-behavior:smooth; }
+body { font-family:'Noto Serif JP',serif; background:var(--white); color:var(--ink); overflow-x:hidden; }
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:1.1rem 3rem;
+  background:rgba(253,250,245,0.96);
+  border-bottom:1px solid rgba(184,148,90,0.2);
+  backdrop-filter:blur(10px);
+}
+.nav-logo { font-family:'Shippori Mincho',serif; font-size:1.25rem; font-weight:700; letter-spacing:0.15em; color:var(--ink); text-decoration:none; }
+.nav-logo em { color:var(--gold); font-style:normal; }
+.nav-links { display:flex; gap:2rem; list-style:none; }
+.nav-links a { font-size:0.72rem; letter-spacing:0.22em; color:var(--ink2); text-decoration:none; transition:color 0.3s; }
+.nav-links a:hover { color:var(--gold); }
+
+.hero { min-height:100vh; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; background:var(--dark); }
+.hero-bg {
+  position:absolute; inset:0;
+  background:
+    linear-gradient(105deg, rgba(13,10,6,0.92) 0%, rgba(13,10,6,0.75) 38%, rgba(13,10,6,0.35) 70%, rgba(13,10,6,0.55) 100%),
+    url('images/hero_ikura_don.jpg') center right / cover no-repeat;
+}
+.hero-grid { position:absolute; inset:0; background-image:repeating-linear-gradient(90deg, rgba(184,148,90,0.035) 0 1px, transparent 1px 80px), repeating-linear-gradient(0deg, rgba(184,148,90,0.02) 0 1px, transparent 1px 120px); }
+.hero-mon {
+  position:absolute; right:7%; top:50%; transform:translateY(-50%);
+  width:220px; height:220px; display:flex; align-items:center; justify-content:center;
+}
+.mon-outer { position:absolute; width:200px; height:200px; border:1px solid rgba(184,148,90,0.25); border-radius:50%; animation:spin1 30s linear infinite; }
+.mon-middle { position:absolute; width:170px; height:170px; border:0.5px solid rgba(184,148,90,0.15); border-radius:50%; }
+.mon-text { text-align:center; }
+.mon-kanji { font-family:'Shippori Mincho',serif; font-size:2.8rem; font-weight:700; color:rgba(184,148,90,0.4); line-height:1; display:block; }
+.mon-en { font-size:0.55rem; letter-spacing:0.3em; color:rgba(184,148,90,0.35); display:block; margin-top:6px; }
+@keyframes spin1 { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+.hero-content { position:relative; z-index:2; text-align:center; padding-right:14%; }
+.hero-eye { font-size:0.65rem; letter-spacing:0.55em; color:var(--gold); margin-bottom:2.2rem; display:block; }
+.hero-title { font-family:'Shippori Mincho',serif; font-size:clamp(3.2rem,8vw,5.8rem); font-weight:700; color:var(--white); line-height:1.05; letter-spacing:0.1em; }
+.hero-title em { color:var(--gold2); font-style:normal; display:block; }
+.hero-line { width:64px; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin:2rem auto; }
+.hero-sub { font-size:0.82rem; letter-spacing:0.38em; color:rgba(247,242,234,0.45); margin-bottom:2.8rem; }
+.hero-badge { display:inline-flex; align-items:center; gap:12px; border:1px solid rgba(184,148,90,0.35); padding:0.9rem 2rem; font-size:0.68rem; letter-spacing:0.25em; color:rgba(184,148,90,0.9); }
+.hero-badge::before { content:''; width:6px; height:6px; background:var(--red2); border-radius:50%; }
+
+.strip { background:var(--gold); padding:0.9rem 0; overflow:hidden; }
+.strip-inner { display:flex; gap:0; white-space:nowrap; animation:ticker 22s linear infinite; }
+.strip-item { font-size:0.7rem; letter-spacing:0.3em; color:var(--dark); padding:0 3rem; opacity:0.85; }
+.strip-dot { color:var(--dark); opacity:0.4; padding:0 0.5rem; }
+@keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+.sec-eye { font-size:0.62rem; letter-spacing:0.5em; color:var(--gold); margin-bottom:1.2rem; display:block; }
+.sec-title { font-family:'Shippori Mincho',serif; font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:700; color:var(--ink); line-height:1.25; letter-spacing:0.06em; margin-bottom:2.5rem; }
+
+/* SUPERVISOR */
+.monitor { background:var(--cream); padding:7rem 3rem; position:relative; overflow:hidden; }
+.monitor::before { content:'はっこく'; position:absolute; right:-1rem; top:50%; transform:translateY(-50%); font-family:'Shippori Mincho',serif; font-size:18rem; font-weight:700; color:rgba(184,148,90,0.05); pointer-events:none; line-height:1; }
+.monitor-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; max-width:900px; }
+.monitor-text { font-size:0.9rem; line-height:2.3; color:var(--ink2); letter-spacing:0.04em; }
+.chef-card { border:1px solid rgba(184,148,90,0.25); padding:2rem; background:var(--white); position:relative; }
+.chef-card::before { content:'監修'; position:absolute; top:-0.7rem; left:1.5rem; background:var(--gold); font-size:0.6rem; letter-spacing:0.3em; color:var(--white); padding:0.2rem 0.8rem; font-family:'Shippori Mincho',serif; }
+.chef-name { font-family:'Shippori Mincho',serif; font-size:1.5rem; font-weight:700; color:var(--ink); margin-bottom:0.3rem; letter-spacing:0.1em; }
+.chef-shop { font-size:0.72rem; letter-spacing:0.2em; color:var(--gold); margin-bottom:1.2rem; display:block; }
+.michelin { display:inline-flex; align-items:center; gap:8px; font-size:0.65rem; letter-spacing:0.2em; color:var(--red2); border:1px solid rgba(180,50,50,0.3); padding:4px 12px; margin-bottom:1.2rem; }
+.chef-quote { font-size:0.8rem; line-height:2; color:var(--ink2); border-left:2px solid var(--gold); padding-left:1rem; font-style:italic; }
+
+/* DARK PHIL */
+.philo { background:var(--ink); padding:7rem 3rem; position:relative; overflow:hidden; }
+.philo-bg { position:absolute; inset:0;
+  background:
+    linear-gradient(95deg, rgba(26,18,8,0.93) 0%, rgba(26,18,8,0.8) 45%, rgba(26,18,8,0.45) 100%),
+    url('images/toro_hashi.jpg') center / cover no-repeat;
+}
+.philo-inner { position:relative; z-index:2; max-width:700px; }
+.philo-eye { font-size:0.62rem; letter-spacing:0.5em; color:var(--gold); margin-bottom:1.2rem; display:block; }
+.philo-title { font-family:'Shippori Mincho',serif; font-size:clamp(2rem,4vw,3rem); font-weight:700; color:var(--white); line-height:1.3; margin-bottom:2.5rem; letter-spacing:0.06em; }
+.philo-quote { font-size:1rem; line-height:2.3; color:rgba(247,242,234,0.72); letter-spacing:0.05em; border-left:3px solid var(--red2); padding-left:1.5rem; margin-bottom:2rem; font-style:italic; }
+.philo-credit { font-size:0.68rem; letter-spacing:0.3em; color:rgba(184,148,90,0.55); }
+
+/* TUNA */
+.tuna { background:var(--white); padding:7rem 3rem; }
+.tuna-header { text-align:center; margin-bottom:5rem; }
+.tuna-photo { max-width:960px; margin:0 auto 4rem; position:relative; }
+.tuna-photo img { width:100%; height:380px; object-fit:cover; display:block; }
+.tuna-photo::after { content:''; position:absolute; inset:12px; border:1px solid rgba(253,250,245,0.5); pointer-events:none; }
+.tuna-photo-cap { position:absolute; bottom:1.6rem; left:2rem; font-family:'Shippori Mincho',serif; font-size:0.8rem; letter-spacing:0.3em; color:var(--white); text-shadow:0 1px 8px rgba(0,0,0,0.6); z-index:2; }
+.tuna-grid { display:grid; grid-template-columns:repeat(3,1fr); max-width:960px; margin:0 auto; border:1px solid rgba(184,148,90,0.2); }
+.tuna-card { padding:2.5rem 2rem; border-right:1px solid rgba(184,148,90,0.2); transition:background 0.4s; }
+.tuna-card:last-child { border-right:none; }
+.tuna-card:hover { background:rgba(184,148,90,0.04); }
+.tuna-kanji { font-family:'Shippori Mincho',serif; font-size:2.5rem; font-weight:700; color:rgba(184,148,90,0.18); display:block; margin-bottom:1rem; line-height:1; }
+.tuna-name { font-family:'Shippori Mincho',serif; font-size:1.2rem; font-weight:700; color:var(--ink); letter-spacing:0.1em; display:block; margin-bottom:0.3rem; }
+.tuna-en { font-size:0.6rem; letter-spacing:0.3em; color:var(--gold); margin-bottom:1.2rem; display:block; }
+.tuna-desc { font-size:0.82rem; line-height:2; color:var(--ink2); }
+.tuna-tag { display:inline-block; font-size:0.58rem; letter-spacing:0.2em; border:1px solid rgba(139,26,26,0.4); color:var(--red); padding:2px 8px; margin-top:1rem; }
+.tuna-source { text-align:center; font-size:0.72rem; letter-spacing:0.2em; color:var(--gold); margin-top:2rem; }
+
+/* SHARI */
+.shari { background:var(--cream2); padding:7rem 3rem; position:relative; overflow:hidden; }
+.shari::after { content:'舎利'; position:absolute; right:-1rem; bottom:-4rem; font-family:'Shippori Mincho',serif; font-size:18rem; font-weight:700; color:rgba(184,148,90,0.06); pointer-events:none; line-height:1; }
+.shari-inner { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; max-width:920px; position:relative; z-index:2; }
+.shari-photo { margin-top:2.2rem; position:relative; max-width:340px; }
+.shari-photo img { width:100%; display:block; }
+.shari-photo::after { content:''; position:absolute; inset:0; border:1px solid var(--gold); transform:translate(10px,10px); pointer-events:none; }
+.shari-photo-cap { font-size:0.62rem; letter-spacing:0.25em; color:var(--gold); margin-top:1.4rem; display:block; }
+.shari-facts { display:flex; flex-direction:column; gap:1.5rem; }
+.fact-row { display:flex; align-items:flex-start; gap:1rem; padding:1.2rem; background:rgba(247,242,234,0.7); border-left:3px solid var(--gold); }
+.fact-icon { width:36px; height:36px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:'Shippori Mincho',serif; font-size:0.9rem; color:var(--white); font-weight:700; }
+.fact-title2 { font-family:'Shippori Mincho',serif; font-size:0.9rem; font-weight:700; color:var(--ink); letter-spacing:0.1em; margin-bottom:0.3rem; }
+.fact-text2 { font-size:0.78rem; line-height:1.8; color:var(--ink2); }
+
+/* MENU */
+.menu { background:var(--ink); padding:7rem 3rem; }
+.menu-header { text-align:center; margin-bottom:4rem; }
+.menu-header .sec-title { color:var(--white); }
+.menu-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; max-width:960px; margin:0 auto; background:rgba(184,148,90,0.12); border:1px solid rgba(184,148,90,0.12); }
+.menu-card { background:var(--dark); padding:2.5rem 2rem; transition:background 0.4s; position:relative; }
+.menu-card:hover { background:rgba(184,148,90,0.06); }
+.menu-card.featured { background:rgba(139,26,26,0.12); }
+.menu-card.featured::after { content:'人気No.1'; position:absolute; top:-1px; right:1.5rem; background:var(--red2); font-size:0.58rem; letter-spacing:0.2em; color:var(--white); padding:3px 10px; font-family:'Shippori Mincho',serif; }
+.menu-name { font-family:'Shippori Mincho',serif; font-size:1.1rem; font-weight:700; color:var(--white); letter-spacing:0.08em; margin-bottom:0.5rem; display:block; }
+.menu-sub { font-size:0.68rem; letter-spacing:0.15em; color:rgba(184,148,90,0.7); margin-bottom:1.2rem; display:block; }
+.menu-price { font-family:'Shippori Mincho',serif; font-size:1.8rem; font-weight:700; color:var(--gold2); line-height:1; }
+.menu-price sup { font-size:0.75rem; color:rgba(184,148,90,0.6); margin-left:4px; }
+.menu-detail { font-size:0.75rem; line-height:1.9; color:rgba(247,242,234,0.45); margin-top:1rem; }
+.menu-note { text-align:center; margin-top:2rem; font-size:0.72rem; letter-spacing:0.2em; color:rgba(184,148,90,0.5); }
+
+/* ACCESS */
+.access { background:var(--cream); padding:7rem 3rem; }
+.access-header { text-align:center; margin-bottom:4rem; }
+.access-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; max-width:860px; margin:0 auto; }
+.shop-name { font-family:'Shippori Mincho',serif; font-size:1.3rem; font-weight:700; color:var(--ink); letter-spacing:0.1em; margin-bottom:1.5rem; border-bottom:1px solid rgba(184,148,90,0.3); padding-bottom:1rem; }
+.info-table { width:100%; border-collapse:collapse; }
+.info-table tr { border-bottom:1px solid rgba(184,148,90,0.12); }
+.info-table td { padding:0.75rem 0; font-size:0.82rem; line-height:1.7; }
+.info-table td:first-child { font-size:0.65rem; letter-spacing:0.2em; color:var(--gold); width:80px; vertical-align:top; padding-top:0.9rem; }
+.info-table td:last-child { color:var(--ink2); }
+
+footer { background:var(--dark); padding:4rem 3rem 2.5rem; text-align:center; }
+.foot-logo { font-family:'Shippori Mincho',serif; font-size:1.5rem; font-weight:700; color:var(--white); letter-spacing:0.15em; margin-bottom:0.4rem; display:block; }
+.foot-logo em { color:var(--gold); font-style:normal; }
+.foot-tag { font-size:0.65rem; letter-spacing:0.4em; color:rgba(184,148,90,0.45); margin-bottom:2rem; display:block; }
+.foot-div { width:36px; height:1px; background:rgba(184,148,90,0.25); margin:0 auto 2rem; }
+.foot-copy { font-size:0.65rem; letter-spacing:0.12em; color:rgba(247,242,234,0.2); }
+
+/* GALLERY */
+.gallery { background:var(--white); padding:7rem 3rem; }
+.gallery-header { text-align:center; margin-bottom:4rem; }
+.gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; max-width:1040px; margin:0 auto; }
+.g-item { position:relative; overflow:hidden; aspect-ratio:4/3; background:var(--cream2); }
+.g-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.8s ease; }
+.g-item:hover img { transform:scale(1.05); }
+.g-item.tall { grid-row:span 2; aspect-ratio:auto; }
+.g-cap { position:absolute; left:0; right:0; bottom:0; padding:2.2rem 1.2rem 1rem; background:linear-gradient(transparent, rgba(13,10,6,0.75)); font-family:'Shippori Mincho',serif; font-size:0.74rem; letter-spacing:0.2em; color:var(--white); }
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  nav { padding:0.9rem 1.2rem; }
+  .nav-links { gap:1rem; }
+  .nav-links a { font-size:0.6rem; letter-spacing:0.12em; }
+  .hero-content { padding-right:0; padding-left:1rem; padding-right:1rem; }
+  .hero-mon { display:none; }
+  .monitor, .philo, .tuna, .shari, .menu, .access, .gallery { padding:4.5rem 1.4rem; }
+  .monitor-grid, .shari-inner { grid-template-columns:1fr; gap:2.5rem; }
+  .tuna-grid { grid-template-columns:1fr; }
+  .tuna-card { border-right:none; border-bottom:1px solid rgba(184,148,90,0.2); }
+  .tuna-card:last-child { border-bottom:none; }
+  .tuna-photo img { height:240px; }
+  .menu-cards { grid-template-columns:1fr; }
+  .access-grid { grid-template-columns:1fr !important; gap:2.5rem; }
+  .gallery-grid { grid-template-columns:repeat(2,1fr); gap:0.8rem; }
+  .shari-photo { max-width:100%; }
+}
+
+.reveal { opacity:0; transform:translateY(20px); transition:opacity 0.85s ease, transform 0.85s ease; }
+.reveal.visible { opacity:1; transform:none; }
+.d1 { transition-delay:0.12s; } .d2 { transition-delay:0.22s; }
+@media (prefers-reduced-motion: reduce) {
+  .strip-inner, .mon-outer { animation:none; }
+  .reveal { opacity:1; transform:none; transition:none; }
+}
+
+/* LANG SWITCH */
+.lang-switch { display:flex; gap:0.6rem; align-items:center; margin-left:1.5rem; }
+.lang-switch a { font-size:0.62rem; letter-spacing:0.15em; color:var(--ink2); text-decoration:none; padding:3px 8px; border:1px solid transparent; transition:all 0.3s; }
+.lang-switch a:hover { color:var(--gold); }
+.lang-switch a.active { border-color:rgba(184,148,90,0.45); color:var(--gold); }
+@media (max-width:860px) {
+  .lang-switch { margin-left:0.5rem; gap:0.3rem; }
+  .lang-switch a { font-size:0.55rem; padding:2px 5px; }
+}
